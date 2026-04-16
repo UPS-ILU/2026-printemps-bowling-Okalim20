@@ -7,6 +7,7 @@ public class Game {
 	private int numLancer=0;
 	private int score=0;
 	private int spareTour=0;
+	private int strikeTour=0;
 	private int [] quilleTab = new int[20];
 	
 	public Game() {
@@ -14,14 +15,20 @@ public class Game {
 	}
 	
 	public void roll(int quilles) {
+		int scoreTour = quilles;
 		quilleTab[numLancer]=quilles;
 		if(spareTour==1) {
-			quilles=quilles*2;
+			scoreTour=quilles*2;
 			spareTour-=1;
 		}
-		
+		if(strikeTour>0) {
+			scoreTour*=2;
+		}
 		if (numLancer%2==0) {
 			numTour++;
+			if(quilles==10) {
+				strikeTour=2;
+			}
 		}
 		else {
 			if(quilleTab[numLancer]+quilleTab[numLancer-1]==10) {
@@ -29,7 +36,7 @@ public class Game {
 			}
 		}
 		numLancer++;
-		score+=quilles;
+		score+=scoreTour;
 		
 }
 	
