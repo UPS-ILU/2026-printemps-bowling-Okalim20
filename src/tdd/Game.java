@@ -12,7 +12,7 @@ public class Game {
 	}
 	
 	public void roll(int quilles) {
-		
+		score+=quilles;
 	}
 	
 	
